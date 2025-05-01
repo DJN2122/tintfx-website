@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Logo from '../../assets/images/big-logo.svg';
+import Logo from '../../assets/images/tint-logo.jpg';
 import { TbMenu } from "react-icons/tb";
 import { gsap } from 'gsap';
 import { IoIosClose } from "react-icons/io";
