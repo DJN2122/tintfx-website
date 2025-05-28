@@ -12,6 +12,7 @@ export default function HomeHeroSection() {
     const socialIconsRef = useRef([]);
     const listItemsRef = useRef([]);
     const contactBtnRef = useRef(null);
+    const scrollPromptRef = useRef(null);
     const callNow = () => {
         window.location.href = 'tel:+353858300202';
     };
@@ -50,6 +51,16 @@ export default function HomeHeroSection() {
                     toggleActions: 'play none none none',
                 },
             });
+            // HIDE scroll prompt after scrolling past hero
+            gsap.to(scrollPromptRef.current, {
+                autoAlpha: 0,
+                scrollTrigger: {
+                    trigger: heroRef.current,
+                    start: 'bottom top',
+                    toggleActions: 'play none none reverse',
+                    scrub: true,
+                },
+            });
         }, heroRef);
 
         return () => {
@@ -61,9 +72,6 @@ export default function HomeHeroSection() {
     return (
         <div className="home-hero-section" ref={heroRef}>
             <div className="hero_bg">
-                {/* <div className='text-end'>
-                    <img src={CarImage} alt="" />
-                </div> */}
                 <div className="manage-container">
                     <div className="premiumCont">
                         <div className="socialIcons">
@@ -95,6 +103,16 @@ export default function HomeHeroSection() {
                             Contact Us
                         </a>
                     </div>
+                </div>
+            </div>
+            <div
+                className="scroll-prompt"
+                ref={scrollPromptRef}
+                style={{ opacity: 1 }}
+            >
+                <div className="scroll-prompt-arrow-container">
+                    <div className="scroll-prompt-arrow"><div></div></div>
+                    <div className="scroll-prompt-arrow"><div></div></div>
                 </div>
             </div>
         </div>
